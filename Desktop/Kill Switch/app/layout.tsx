@@ -1,19 +1,36 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
+
 export const metadata: Metadata = {
-  title: "Kill Switch | AI Security Copilot",
+  title: "SafeLens AI | AI-Powered Security Intelligence",
   description:
-    "A premium AI security operations workspace for phishing triage, policy-gated actions, and audit-ready incident response.",
-  applicationName: "Kill Switch",
+    "Enterprise-grade AI security operations platform for phishing detection, threat analysis, and incident response. Protect your organization with intelligent triage.",
+  applicationName: "SafeLens AI",
   keywords: [
-    "ArmorIQ",
-    "ArmorClaw",
-    "AI security agent",
+    "AI security",
+    "phishing detection",
+    "threat analysis",
+    "security operations",
     "incident response",
-    "phishing triage",
-    "hackathon",
+    "enterprise security",
   ],
+};
+
+export const viewport: Viewport = {
+  themeColor: "#09090b",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -22,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} bg-background`}>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
