@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -27,7 +28,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "glass-strong shadow-lg shadow-black/20"
+          ? "glass-strong shadow-lg shadow-black/10 dark:shadow-black/20"
           : "bg-transparent"
       }`}
     >
@@ -37,7 +38,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-2 group">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg gradient-accent">
               <svg
-                className="h-5 w-5 text-background"
+                className="h-5 w-5 text-white dark:text-background"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -61,7 +62,7 @@ export function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-white/5"
+                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-black/5 dark:hover:bg-white/5"
               >
                 {link.label}
               </Link>
@@ -70,33 +71,37 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
             <button className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
               Sign In
             </button>
-            <button className="px-4 py-2 text-sm font-medium text-primary-foreground gradient-accent rounded-lg hover:opacity-90 transition-opacity">
+            <button className="px-4 py-2 text-sm font-medium text-white dark:text-primary-foreground gradient-accent rounded-lg hover:opacity-90 transition-opacity">
               Get Started
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-muted-foreground hover:text-foreground"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2 text-muted-foreground hover:text-foreground"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -117,7 +122,7 @@ export function Navbar() {
                 <button className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors text-left">
                   Sign In
                 </button>
-                <button className="mx-4 px-4 py-2 text-sm font-medium text-primary-foreground gradient-accent rounded-lg">
+                <button className="mx-4 px-4 py-2 text-sm font-medium text-white dark:text-primary-foreground gradient-accent rounded-lg">
                   Get Started
                 </button>
               </div>

@@ -12,12 +12,20 @@ export function Hero() {
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Primary glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-primary/10 blur-[120px] animate-pulse-glow" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-primary/10 dark:bg-primary/10 blur-[120px] animate-pulse-glow" />
         {/* Secondary accent */}
-        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px] animate-float" />
-        {/* Grid pattern */}
+        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-primary/5 dark:bg-primary/5 blur-[100px] animate-float" />
+        {/* Grid pattern - Light mode */}
         <div 
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.08] dark:opacity-[0.03]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px',
+          }}
+        />
+        {/* Grid pattern - Dark mode overlay */}
+        <div 
+          className="absolute inset-0 opacity-0 dark:opacity-[0.03]"
           style={{
             backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
             backgroundSize: '60px 60px',
@@ -61,11 +69,11 @@ export function Hero() {
         >
           <button 
             onClick={scrollToWorkbench}
-            className="w-full sm:w-auto px-8 py-4 text-base font-medium text-primary-foreground gradient-accent rounded-xl hover:opacity-90 transition-all shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
+            className="w-full sm:w-auto px-8 py-4 text-base font-medium text-white dark:text-primary-foreground gradient-accent rounded-xl hover:opacity-90 transition-all shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
           >
             Try It Now
           </button>
-          <button className="w-full sm:w-auto px-8 py-4 text-base font-medium text-foreground glass rounded-xl hover:bg-white/10 transition-all group flex items-center justify-center gap-2">
+          <button className="w-full sm:w-auto px-8 py-4 text-base font-medium text-foreground glass rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-all group flex items-center justify-center gap-2">
             <span>Watch Demo</span>
             <svg className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
